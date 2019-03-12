@@ -1,0 +1,20 @@
+<mat-card class="card">
+  <mat-card-title-group>
+    <mat-card-title>{{ weather.name }}</mat-card-title>
+    <mat-card-subtitle>{{ weather.weather[0].description | capitalize }}</mat-card-subtitle>
+    <img mat-card-sm-image src="{{ weather.weather[0].iconUrl }}" />
+  </mat-card-title-group>
+  <mat-card-content fxLayout="row" fxLayoutAlign="space-around">
+    <div>
+      <fa-icon [icon]="icons.temp"></fa-icon>
+      {{ weather.main.temp }}&#176;c
+    </div>
+    <div>
+      <fa-icon [icon]="icons.wind"></fa-icon>
+      {{ weather.wind.speed }} mph
+    </div>
+  </mat-card-content>
+  <mat-card-footer *ngIf="isSelected">
+    <app-weather-forecast [cityId]="weather.id"></app-weather-forecast>
+  </mat-card-footer>
+</mat-card>

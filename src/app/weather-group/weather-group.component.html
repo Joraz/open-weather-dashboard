@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <span>Current Weather Across Europe</span>
+</mat-toolbar>
+<div *ngIf="weatherData$ | async as weatherData">
+  <div fxLayout="row wrap" fxLayoutAlign="space-around">
+    <div *ngFor="let data of weatherData">
+      <app-weather-detail [weather]="data" [isSelected]="data.id === selectedCityId" (click)="citySelected(data.id)">
+      </app-weather-detail>
+    </div>
+  </div>
+
+</div>
